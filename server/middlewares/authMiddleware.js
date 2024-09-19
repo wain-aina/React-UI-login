@@ -6,14 +6,14 @@ module.exports.checkUser = (req, res, next) => {
   if (token) {
     jwt.verify(
       token,
-      "kishan sheth super secret key",
+      "bromosoft",
       async (err, decodedToken) => {
         if (err) {
           res.json({ status: false });
           next();
         } else {
           const user = await User.findById(decodedToken.id);
-          if (user) res.json({ status: true, user: user.email });
+          if (user) res.json({ status: true, user: user.email, times: user.lastLogin.toLocaleString('en-US') });
           else res.json({ status: false });
           next();
         }

@@ -23,7 +23,8 @@ export default function Cards() {
           removeCookie("jwt");
           navigate("/login");
         } else
-          toast(`Hi ${data.user} 🦄`, {
+          toast(`Hi ${data.user}. 
+            Your last login was on ${data.times}`, {
             theme: "dark",
           });
       }

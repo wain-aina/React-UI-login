@@ -11,6 +11,15 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Password is Required"],
   },
+  loginAttempts: { 
+    type: Number, 
+    required: true, 
+    default: 0 
+  },
+  lastLogin: { 
+    type: Date,
+    default: Date.now()
+  },
 });
 
 userSchema.pre("save", async function (next) {
